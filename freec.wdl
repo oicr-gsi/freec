@@ -164,7 +164,9 @@ command <<<
  mv ~{basename(inputTumor)}_sample.cpn ~{sampleID}_sample.cpn
 
  if [[ -f ~{inputNormal} ]]; then
-    mv  ~{basename(inputNormal + "")}"_control.cpn" ~{sampleID}_control.cpn
+    if [[ -f ~{basename(inputNormal + "")}"_control.cpn" ]]
+      mv  ~{basename(inputNormal + "")}"_control.cpn" ~{sampleID}_control.cpn
+    fi
  fi
 
  if [[ -f "~{basename(inputTumor)}_GC_profile.cpn" ]]; then
