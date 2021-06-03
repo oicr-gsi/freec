@@ -17,8 +17,7 @@ call runFreec { input: inputTumor = inputTumor,
                        inputNormal = inputNormal,
                        sampleID = sampleID,
                        sequencingType = sequencingType,
-                       bedGraphOutput = if bedgraphOutput then "TRUE" else "FALSE",
-                       inputFiles = select_all([inputTumor, inputNormal]) }
+                       bedGraphOutput = if bedgraphOutput then "TRUE" else "FALSE" }
 
 meta {
   author: "Peter Ruzanov"
@@ -65,7 +64,6 @@ input {
   String logPath = "freec_run.log"
   String modules = "freec/11.5 bedtools/2.27 samtools/0.1.19 hg19/p13"
   Int    timeout = 72
-  Array[File] inputFiles
 }
 
 parameter_meta {
@@ -166,10 +164,9 @@ command <<<
  mv ~{basename(inputTumor)}_ratio.txt ~{sampleID}_ratio.txt
  mv ~{basename(inputTumor)}_sample.cpn ~{sampleID}_sample.cpn
  
- if [[ -f ~{inputNormal} ]]; then
-    if [[ -f ~{basename(inputFiles[1])}"_control.cpn" ]]
-      mv  ~{basename(inputFiles[1])}"_control.cpn" ~{sampleID}_control.cpn
-    fi
+ if [[ -n "~{inputNormal}" ]]; then
+    NORM=$(echo ~{inputNormal} | sed s!.*/!!)
+    mv  $NORM"_control.cpn" ~{sampleID}_control.cpn
  fi
 
  if [[ -f "~{basename(inputTumor)}_GC_profile.cpn" ]]; then
