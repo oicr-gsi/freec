@@ -13,7 +13,12 @@ input {
 String sampleID = if outputFileNamePrefix=="" then basename(inputTumor, ".bam") else outputFileNamePrefix
 
 # Configure and run FREEC
-call runFreec { input: inputTumor = inputTumor, inputNormal = inputNormal, sampleID = sampleID, sequencingType = sequencingType, bedGraphOutput = if bedgraphOutput then "TRUE" else "FALSE" }
+call runFreec { input: inputTumor = inputTumor, 
+                       inputNormal = inputNormal,
+                       sampleID = sampleID,
+                       sequencingType = sequencingType,
+                       bedGraphOutput = if bedgraphOutput then "TRUE" else "FALSE",
+                       inputFiles = select_all([inputTumor, inputNormal]) }
 
 meta {
   author: "Peter Ruzanov"
@@ -48,10 +53,9 @@ input {
   String bedGraphOutput = "TRUE"
   Float  coefficientOfVariation = 0.05
   Float  breakPointThreshold = 0.8
-  String contaminationAdjustment
+  String? contaminationAdjustment
   Float  contaminationFraction = 0.0
   Int    window = 1000
-  Int    ploidy = 2
   Int    jobMemory  = 20
   Int    maxThreads = 4
   Int    telocentromeric = 50000
@@ -61,7 +65,7 @@ input {
   String logPath = "freec_run.log"
   String modules = "freec/11.5 bedtools/2.27 samtools/0.1.19 hg19/p13"
   Int    timeout = 72
-
+  Array[File] inputFiles
 }
 
 parameter_meta {
@@ -78,7 +82,6 @@ parameter_meta {
  contaminationAdjustment: "informs FREEC about expected degree of contamination with normal tissue"
  contaminationFraction: "Contaminating fraction, by default is 0"
  window: "Defines the resolution of the analysis, default:1000"
- ploidy: "Ploidy, 2 is default"
  jobMemory: "Memory in Gb for this job"
  maxThreads: "Maximum threads for the process, default is 4"
  telocentromeric: "For human, we need 50000 (default)"
@@ -108,7 +111,7 @@ command <<<
  general_lines.append("coefficientOfVariation = ~{coefficientOfVariation}")
  if "~{contaminationAdjustment}":
      general_lines.append("contamination = ~{contaminationFraction}")
-     general_lines.append("contaminationAdjustment = TRUE") 
+     general_lines.append("contaminationAdjustment = ~{contaminationAdjustment}") 
 
  seqType = "~{sequencingType}"
  if seqType.startswith('WG'):
@@ -116,7 +119,7 @@ command <<<
      general_lines.append("minCNAlength = 1")
      general_lines.append("readCountThreshold = 10")
      general_lines.append("step = 1000")
-     general_lines.append("window = 50000")
+     general_lines.append("window = ~{window}")
  else:
      general_lines.append("forceGCcontentNormalization = 1")
      general_lines.append("minCNAlength = 3")
@@ -130,12 +133,12 @@ command <<<
  general_lines.append("telocentromeric = ~{telocentromeric}")
 
  sample_lines.append("mateFile = ~{inputTumor}")
- sample_lines.append("inputFormat = BAM")
+ sample_lines.append("inputFormat = ~{inputFormat}")
  sample_lines.append("mateOrientation = ~{mateOrientation}")
 
  if "~{inputNormal}":
      control_lines.append("mateFile = ~{inputNormal}")
-     control_lines.append("inputFormat = BAM")
+     control_lines.append("inputFormat = ~{inputFormat}")
      control_lines.append("mateOrientation = ~{mateOrientation}")
 
  seqType = "~{sequencingType}"
@@ -162,10 +165,10 @@ command <<<
  mv ~{basename(inputTumor)}_CNVs ~{sampleID}_CNVs
  mv ~{basename(inputTumor)}_ratio.txt ~{sampleID}_ratio.txt
  mv ~{basename(inputTumor)}_sample.cpn ~{sampleID}_sample.cpn
-
+ 
  if [[ -f ~{inputNormal} ]]; then
-    if [[ -f ~{basename((inputNormal + ""))}"_control.cpn" ]]
-      mv  ~{basename((inputNormal + ""))}"_control.cpn" ~{sampleID}_control.cpn
+    if [[ -f ~{basename(inputFiles[1])}"_control.cpn" ]]
+      mv  ~{basename(inputFiles[1])}"_control.cpn" ~{sampleID}_control.cpn
     fi
  fi
 
