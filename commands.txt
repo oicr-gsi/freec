@@ -1,0 +1,22 @@
+## Commands
+This section lists command(s) run by freec workflow
+
+* Running freec
+
+FREEC is a CNV-calling tool which may run in a control-free (Tumor-only) mode.
+This workflow runs a custom python script which assembles a config file using
+the provided inputs
+
+```
+ 
+ Writing a config file given the inputs
+
+ ...
+
+ freec --conf iCONFIG_FILE >> LOG_PATH
+
+ ...
+
+ Post-processing and renaming of files
+
+```
