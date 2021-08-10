@@ -23,6 +23,37 @@ meta {
   author: "Peter Ruzanov"
   email: "peter.ruzanov@oicr.on.ca"
   description: "FREEC 2.0"
+  dependencies: [
+      {
+        name: "samtools/0.1.19",
+        url: "https://github.com/samtools/samtools/archive/0.1.19.tar.gz"
+      },
+      {
+        name: "bedtools/2.27",
+        url: "https://bedtools.readthedocs.io/en/latest/"
+      },
+      {
+        name: "freec/11.5",
+        url: "https://github.com/BoevaLab/FREEC/archive/v11.5.tar.gz"
+      }
+  ]
+  output_meta: {
+    infoFile: "Info file for the calls",
+    regionFile: "Region File",
+    ratioFile: "Ratio File",
+    cnvTumor: "CNV for tumor file",
+    cnvNormal: "CNV for normal file",
+    gcProfile: "GC profile data",
+    ratioBedGraph: "Retio BedGraph data"
+  }
+}
+
+parameter_meta {
+ inputTumor: "Input .bam file for analysis sample"
+ inputNormal: "Optional input .bam file for control sample"
+ sequencingType: "One of WG, EX or TS"
+ bedgraphOutput: "String that says TRUE or FALSE, determines if we need BedGraph output or not"
+ outputFileNamePrefix: "Prefix for outputs"
 }
 
 output {
