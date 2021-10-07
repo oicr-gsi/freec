@@ -37,7 +37,10 @@
             "freec.sequencingType": "WG"
         },
         "description": "freec workflow test",
-        "engineArguments": {},
+        "engineArguments": {
+           "write_to_cache": false,
+           "read_from_cache": false
+        },
         "id": "TEST_NoControl",
         "metadata": {
             "freec.cnvNormal": {
@@ -155,7 +158,10 @@
             "freec.sequencingType": "WG"
         },
         "description": "freec workflow test",
-        "engineArguments": {},
+        "engineArguments": {
+           "write_to_cache": false,
+           "read_from_cache": false
+        },
         "id": "TEST_Control",
         "metadata": {
             "freec.cnvNormal": {
