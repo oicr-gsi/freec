@@ -1,3 +1,5 @@
+## 2.1.1 - 2021-10-07
+- Changing intervalFile type to String?
 ## 2.1.0 - 2021-06-02
 - Migrate to Vidarr
 ## 2.0 - 2020-01-21

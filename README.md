@@ -2,8 +2,6 @@
 
 FREEC 2.0
 
-## Overview
-
 ## Dependencies
 
 * [samtools 0.1.19](https://github.com/samtools/samtools/archive/0.1.19.tar.gz)
@@ -38,7 +36,7 @@ Parameter|Value|Default|Description
 #### Optional task parameters:
 Parameter|Value|Default|Description
 ---|---|---|---
-`runFreec.intervalFile`|File?|None|Optional interval .bed file, for targeted sequencing like EX, TS
+`runFreec.intervalFile`|String?|None|Optional path to an interval .bed file, for targeted sequencing like EX, TS
 `runFreec.chrFiles`|String|"$HG19_ROOT/"|Directory with chromosome-specific .fa files
 `runFreec.chrLenFile`|String|"$HG19_ROOT/hg19_random.fa.fai"|Path to .fai file, needed for chromosome sizes
 `runFreec.coefficientOfVariation`|Float|0.05|Parameter for CNV calling, default is 0.05
