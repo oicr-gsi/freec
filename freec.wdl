@@ -77,7 +77,7 @@ input {
   String sequencingType
   String sampleID = "TEST"
   File? inputNormal
-  File? intervalFile
+  String? intervalFile
   String chrFiles = "$HG19_ROOT/"
   String chrLenFile = "$HG19_ROOT/hg19_random.fa.fai"
   String bedGraphOutput = "TRUE"
@@ -102,7 +102,7 @@ parameter_meta {
  inputNormal: "Optional input .bam file for control sample"
  sequencingType: "One of WG, EX or TS"
  sampleID: "This is used as a prefix for output files"
- intervalFile: "Optional interval .bed file, for targeted sequencing like EX, TS"
+ intervalFile: "Optional path to an interval .bed file, for targeted sequencing like EX, TS"
  chrFiles: "Directory with chromosome-specific .fa files"
  chrLenFile: "Path to .fai file, needed for chromosome sizes"
  bedGraphOutput: "String that says TRUE or FALSE, determines if we need BedGraph output or not"
