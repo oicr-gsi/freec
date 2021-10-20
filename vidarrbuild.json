@@ -1,6 +1,8 @@
 {
     "names": [
-        "freec"
+        "freec",
+        "freec_matched",
+        "freec_tumor_only"
     ],
     "wdl": "freec.wdl"
 }
