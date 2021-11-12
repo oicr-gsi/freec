@@ -102,8 +102,8 @@
         },
         "validators": [
             {
-                "metrics_calculate": "@CHECKOUT@/./calculate.sh",
-                "metrics_compare": "@CHECKOUT@/./compare.sh",
+                "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
+                "metrics_compare": "@CHECKOUT@/tests/compare.sh",
                 "output_metrics": "/.mounts/labs/gsi/testdata/freec/output_metrics/TEST_NoControl.metrics",
                 "type": "script"
             }
@@ -223,8 +223,8 @@
         },
         "validators": [
             {
-                "metrics_calculate": "@CHECKOUT@/./calculate.sh",
-                "metrics_compare": "@CHECKOUT@/./compare.sh",
+                "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
+                "metrics_compare": "@CHECKOUT@/tests/compare.sh",
                 "output_metrics": "/.mounts/labs/gsi/testdata/freec/output_metrics/TEST_Control.metrics",
                 "type": "script"
             }
