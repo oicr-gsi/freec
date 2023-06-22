@@ -40,7 +40,7 @@ call runFreec { input: inputTumor = inputTumor,
                        sampleID = sampleID,
                        chrFiles = resources[reference].refRoot,
                        chrLenFile = resources[reference].refFai,
-                       modules = "freec/11.5 bedtools/2.27 samtools/0.1.19 {resources[reference].refModule}", 
+                       modules = "freec/11.5 bedtools/2.27 samtools/0.1.19 ~{resources[reference].refModule}", 
                        sequencingType = sequencingType,
                        bedGraphOutput = if bedgraphOutput then "TRUE" else "FALSE" }
 
