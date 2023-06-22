@@ -1,21 +1,46 @@
 version 1.0
 
+struct freecResources {
+ String refModule
+ String refRoot
+ String refFai
+}
+
 workflow freec {
 input {
     # Normally we need only tumor bam, normal bam may be used when available
-    File    inputTumor
-    File?   inputNormal
+    File inputTumor
+    File? inputNormal
     Boolean bedgraphOutput = true
-    String  sequencingType
-    String  outputFileNamePrefix = ""
+    String sequencingType
+    String outputFileNamePrefix = ""
+    String reference
 }
 
 String sampleID = if outputFileNamePrefix=="" then basename(inputTumor, ".bam") else outputFileNamePrefix
+
+Map[String,freecResources] resources = {
+  "hg19": {"refModule": "hg19/p13",
+           "refRoot": "$HG19_ROOT/",
+           "refFai": "$HG19_ROOT/hg19_random.fa.fai"
+  },
+  "hg38": {"refModule": "hg38/p12",
+           "refRoot": "$HG38_ROOT/",
+           "refFai": "$HG38_ROOT/hg38_random.fa.fai"
+  },
+  "mm10": {"refModule": "mm10/p6",
+           "refRoot": "$MM10_ROOT/",
+           "refFai": "$MM10_ROOT/mm10.fa.fai"
+  }
+}
 
 # Configure and run FREEC
 call runFreec { input: inputTumor = inputTumor, 
                        inputNormal = inputNormal,
                        sampleID = sampleID,
+                       chrFiles = resources[reference].refRoot,
+                       chrLenFile = resources[reference].refFai,
+                       modules = "freec/11.5 bedtools/2.27 samtools/0.1.19 {resources[reference].refModule}", 
                        sequencingType = sequencingType,
                        bedGraphOutput = if bedgraphOutput then "TRUE" else "FALSE" }
 
@@ -51,6 +76,7 @@ meta {
 parameter_meta {
  inputTumor: "Input .bam file for analysis sample"
  inputNormal: "Optional input .bam file for control sample"
+ reference: "Reference assembly id"
  sequencingType: "One of WG, EX or TS"
  bedgraphOutput: "String that says TRUE or FALSE, determines if we need BedGraph output or not"
  outputFileNamePrefix: "Prefix for outputs"
@@ -78,8 +104,8 @@ input {
   String sampleID = "TEST"
   File? inputNormal
   String? intervalFile
-  String chrFiles = "$HG19_ROOT/"
-  String chrLenFile = "$HG19_ROOT/hg19_random.fa.fai"
+  String chrFiles 
+  String chrLenFile 
   String bedGraphOutput = "TRUE"
   Float  coefficientOfVariation = 0.05
   Float  breakPointThreshold = 0.8
@@ -93,7 +119,7 @@ input {
   String mateOrientation = "FR"
   String configFile = "config_freec.conf"
   String logPath = "freec_run.log"
-  String modules = "freec/11.5 bedtools/2.27 samtools/0.1.19 hg19/p13"
+  String modules
   Int    timeout = 72
 }
 

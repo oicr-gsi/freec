@@ -2,6 +2,7 @@
     {
         "arguments": {
             "freec.bedgraphOutput": null,
+            "freec.reference": "hg19",
             "freec.inputNormal": null,
             "freec.inputTumor": {
                 "contents": {
@@ -112,6 +113,7 @@
     {
         "arguments": {
             "freec.bedgraphOutput": null,
+            "freec.reference": "hg19",
             "freec.inputNormal": {
                 "contents": {
                     "configuration": "/oicr/data/archive/seqware/seqware_analysis_12/hsqwprod/seqware-results/BwaMem_1.2/11510526/SWID_14950709_PCSI_1106_Ly_R_PE_619_WG_190819_A00827_0025_BHKC7JDSXX_TGACTACT-CCTTACAG_L002_001.annotated.bam",

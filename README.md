@@ -23,6 +23,7 @@ Parameter|Value|Description
 ---|---|---
 `inputTumor`|File|Input .bam file for analysis sample
 `sequencingType`|String|One of WG, EX or TS
+`reference`|String|Reference assembly id
 
 
 #### Optional workflow parameters:
@@ -37,8 +38,6 @@ Parameter|Value|Default|Description
 Parameter|Value|Default|Description
 ---|---|---|---
 `runFreec.intervalFile`|String?|None|Optional path to an interval .bed file, for targeted sequencing like EX, TS
-`runFreec.chrFiles`|String|"$HG19_ROOT/"|Directory with chromosome-specific .fa files
-`runFreec.chrLenFile`|String|"$HG19_ROOT/hg19_random.fa.fai"|Path to .fai file, needed for chromosome sizes
 `runFreec.coefficientOfVariation`|Float|0.05|Parameter for CNV calling, default is 0.05
 `runFreec.breakPointThreshold`|Float|0.8|Parameter for CNV calling, default is 0.8
 `runFreec.contaminationAdjustment`|String?|None|informs FREEC about expected degree of contamination with normal tissue
@@ -51,7 +50,6 @@ Parameter|Value|Default|Description
 `runFreec.mateOrientation`|String|"FR"|For paired-end Illumina we need FR, other types are also supported
 `runFreec.configFile`|String|"config_freec.conf"|config_freec.conf
 `runFreec.logPath`|String|"freec_run.log"|We have a log file which is not provisioned but can be examined if anything goes wrong
-`runFreec.modules`|String|"freec/11.5 bedtools/2.27 samtools/0.1.19 hg19/p13"|Names and versions of modules
 `runFreec.timeout`|Int|72|Timeout in hours, needed to override imposed limits
 
 
