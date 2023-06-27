@@ -1,3 +1,5 @@
+## 2.2.0 - 2023-06-22
+- Assembly-specific choices moved into wdl
 ## Unreleased - 2021-11-10
 [GP-2878](https://jira.oicr.on.ca/browse/GP-2878) Making RT scripts more robust
 ## 2.1.1 - 2021-10-07

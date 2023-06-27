@@ -2,10 +2,11 @@
     {
         "arguments": {
             "freec.bedgraphOutput": null,
+            "freec.reference": "hg19",
             "freec.inputNormal": null,
             "freec.inputTumor": {
                 "contents": {
-                    "configuration": "/oicr/data/archive/seqware/seqware_analysis_12/hsqwprod/seqware-results/BwaMem_1.2/42002730/SWID_14950765_PCSI_1106_Pa_P_PE_625_WG_5270_190819_A00827_0025_BHKC7JDSXX_AAGTTATC-AATAGCAA_L004_001.annotated.bam",
+                    "configuration": "/.mounts/labs/gsi/testdata/freec/input_data/PCSI_0090_Pa_P_PE_501_WG_526_170203_D00343_0160_ACACFLANXX_CCGTCC_L008_001.annotated.chr22.bam",
                     "externalIds": [
                         {
                             "id": "TEST",
@@ -15,10 +16,8 @@
                 },
                 "type": "EXTERNAL"
             },
-            "freec.outputFileNamePrefix": "TEST_PCSI_1106_NC",
+            "freec.outputFileNamePrefix": "TEST_PCSI_0090_NC",
             "freec.runFreec.breakPointThreshold": null,
-            "freec.runFreec.chrFiles": null,
-            "freec.runFreec.chrLenFile": null,
             "freec.runFreec.coefficientOfVariation": null,
             "freec.runFreec.configFile": null,
             "freec.runFreec.contaminationAdjustment": "None",
@@ -29,8 +28,6 @@
             "freec.runFreec.logPath": null,
             "freec.runFreec.mateOrientation": null,
             "freec.runFreec.maxThreads": null,
-            "freec.runFreec.modules": null,
-            "freec.runFreec.ploidy": null,
             "freec.runFreec.telocentromeric": null,
             "freec.runFreec.timeout": null,
             "freec.runFreec.window": null,
@@ -112,9 +109,10 @@
     {
         "arguments": {
             "freec.bedgraphOutput": null,
+            "freec.reference": "hg19",
             "freec.inputNormal": {
                 "contents": {
-                    "configuration": "/oicr/data/archive/seqware/seqware_analysis_12/hsqwprod/seqware-results/BwaMem_1.2/11510526/SWID_14950709_PCSI_1106_Ly_R_PE_619_WG_190819_A00827_0025_BHKC7JDSXX_TGACTACT-CCTTACAG_L002_001.annotated.bam",
+                    "configuration": "/.mounts/labs/gsi/testdata/freec/input_data/PCSI_0090_Ly_R_PE_598_WG_170201_D00355_0145_ACADTLANXX_GTAGAG_L008_001.annotated.chr22.bam",
                     "externalIds": [
                         {
                             "id": "TEST",
@@ -126,7 +124,7 @@
             },
             "freec.inputTumor": {
                 "contents": {
-                    "configuration": "/oicr/data/archive/seqware/seqware_analysis_12/hsqwprod/seqware-results/BwaMem_1.2/42002730/SWID_14950765_PCSI_1106_Pa_P_PE_625_WG_5270_190819_A00827_0025_BHKC7JDSXX_AAGTTATC-AATAGCAA_L004_001.annotated.bam",
+                    "configuration": "/.mounts/labs/gsi/testdata/freec/input_data/PCSI_0090_Pa_P_PE_501_WG_526_170203_D00343_0160_ACACFLANXX_CCGTCC_L008_001.annotated.chr22.bam",
                     "externalIds": [
                         {
                             "id": "TEST",
@@ -136,10 +134,8 @@
                 },
                 "type": "EXTERNAL"
             },
-            "freec.outputFileNamePrefix": "TEST_PCSI_1106",
+            "freec.outputFileNamePrefix": "TEST_PCSI_0090",
             "freec.runFreec.breakPointThreshold": null,
-            "freec.runFreec.chrFiles": null,
-            "freec.runFreec.chrLenFile": null,
             "freec.runFreec.coefficientOfVariation": null,
             "freec.runFreec.configFile": null,
             "freec.runFreec.contaminationAdjustment": "None",
@@ -150,8 +146,6 @@
             "freec.runFreec.logPath": null,
             "freec.runFreec.mateOrientation": null,
             "freec.runFreec.maxThreads": null,
-            "freec.runFreec.modules": null,
-            "freec.runFreec.ploidy": null,
             "freec.runFreec.telocentromeric": null,
             "freec.runFreec.timeout": null,
             "freec.runFreec.window": null,
