@@ -62,15 +62,36 @@ meta {
         url: "https://github.com/BoevaLab/FREEC/archive/v11.5.tar.gz"
       }
   ]
-  output_meta: {
-    infoFile: "Info file for the calls",
-    regionFile: "Region File",
-    ratioFile: "Ratio File",
-    cnvTumor: "CNV for tumor file",
-    cnvNormal: "CNV for normal file",
-    gcProfile: "GC profile data",
-    ratioBedGraph: "Retio BedGraph data"
-  }
+    output_meta: {
+    infoFile: {
+        description: "Info file for the calls",
+        vidarr_label: "infoFile"
+    },
+    regionFile: {
+        description: "Region File",
+        vidarr_label: "regionFile"
+    },
+    ratioFile: {
+        description: "Ratio File",
+        vidarr_label: "ratioFile"
+    },
+    cnvTumor: {
+        description: "CNV for tumor file",
+        vidarr_label: "cnvTumor"
+    },
+    cnvNormal: {
+        description: "CNV for normal file",
+        vidarr_label: "cnvNormal"
+    },
+    gcProfile: {
+        description: "GC profile data",
+        vidarr_label: "gcProfile"
+    },
+    ratioBedGraph: {
+        description: "Retio BedGraph data",
+        vidarr_label: "ratioBedGraph"
+    }
+}
 }
 
 parameter_meta {

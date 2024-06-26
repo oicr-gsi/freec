@@ -55,27 +55,27 @@ Parameter|Value|Default|Description
 
 ### Outputs
 
-Output | Type | Description
----|---|---
-`infoFile`|File|Info file for the calls
-`regionFile`|File|Region File
-`ratioFile`|File|Ratio File
-`cnvTumor`|File|CNV for tumor file
-`cnvNormal`|File?|CNV for normal file
-`gcProfile`|File?|GC profile data
-`ratioBedGraph`|File?|Retio BedGraph data
+Output | Type | Description | Labels
+---|---|---|---
+`infoFile`|File|Info file for the calls|vidarr_label: infoFile
+`regionFile`|File|Region File|vidarr_label: regionFile
+`ratioFile`|File|Ratio File|vidarr_label: ratioFile
+`cnvTumor`|File|CNV for tumor file|vidarr_label: cnvTumor
+`cnvNormal`|File?|CNV for normal file|vidarr_label: cnvNormal
+`gcProfile`|File?|GC profile data|vidarr_label: gcProfile
+`ratioBedGraph`|File?|Retio BedGraph data|vidarr_label: ratioBedGraph
 
 
 ## Commands
- This section lists command(s) run by freec workflow
+This section lists command(s) run by freec workflow
  
- * Running freec
+* Running freec
  
- FREEC is a CNV-calling tool which may run in a control-free (Tumor-only) mode.
- This workflow runs a custom python script which assembles a config file using
- the provided inputs
+FREEC is a CNV-calling tool which may run in a control-free (Tumor-only) mode.
+This workflow runs a custom python script which assembles a config file using
+the provided inputs
  
- ```
+```
   
   Writing a config file given the inputs
  
@@ -87,8 +87,8 @@ Output | Type | Description
  
   Post-processing and renaming of files
  
- ```
- ## Support
+```
+## Support
 
 For support, please file an issue on the [Github project](https://github.com/oicr-gsi) or send an email to gsi@oicr.on.ca .
 
