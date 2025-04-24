@@ -47,7 +47,7 @@ call runFreec { input: inputTumor = inputTumor,
 meta {
   author: "Peter Ruzanov"
   email: "peter.ruzanov@oicr.on.ca"
-  description: "FREEC 2.0"
+  description: "FREEC performs control-free copy number alteration (CNA) detection using deep-sequencing data. The tool deals with two frequent problems in the analysis of cancer deep-sequencing data: absence of control sample and possible polyploidy of cancer cells. The workflow accepts input BAM file(s) and notably, library design type among other parameters."
   dependencies: [
       {
         name: "samtools/0.1.19",
